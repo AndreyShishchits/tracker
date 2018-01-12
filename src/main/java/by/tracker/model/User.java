@@ -42,7 +42,7 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "PROJECT_ID")})
     private List<Project> projects = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USERS_PROFILES",
             joinColumns = { @JoinColumn(name = "USER_ID") },
             inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })

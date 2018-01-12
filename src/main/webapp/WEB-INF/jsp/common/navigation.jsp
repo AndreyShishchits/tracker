@@ -10,12 +10,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="https://vk.com/wtfomgbrb" target="_blank">
+                <a class="navbar-brand"
+                   href="https://www.linkedin.com/in/%D0%B0%D0%BD%D0%B4%D1%80%D0%B5%D0%B9-%D1%88%D0%B8%D1%89%D0%B8%D1%86-ba601a14b/"
+                   target="_blank">
                     Andrey
                 </a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -29,8 +30,7 @@
                         </sec:authorize>
                     </li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+            </div>
     </nav>
 
 </header>

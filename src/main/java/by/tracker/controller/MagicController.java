@@ -1,10 +1,16 @@
 package by.tracker.controller;
 
+import by.tracker.model.Project;
 import by.tracker.model.User;
+import by.tracker.repository.ProjectRepository;
 import by.tracker.repository.TaskRepository;
+import by.tracker.service.ProjectService;
 import by.tracker.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
-public class RootController {
+public class MagicController {
 
     @Autowired
     UserService userService;
@@ -22,9 +28,27 @@ public class RootController {
     @Autowired
     TaskRepository taskRepository;
 
+    @Autowired
+    ProjectService projectService;
+
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String welcome(ModelMap model) {
+        return "index";
+    }
 
     @RequestMapping(value = "projects", method = RequestMethod.GET)
-    public String welcome(ModelMap model) {
+    public String viewUserProjects(ModelMap model) {
+        return "projects";
+    }
+
+    @RequestMapping(value = "projects/new", method = RequestMethod.POST)
+    @Transactional
+    public String addNewProject(ModelMap model, @RequestParam String name){
+        User user = userService.findByLogin(userService.getLoggedinUserName());
+        Project project = projectService.create(name);
+        user.getProjects().add(project);
+        userService.update(user);
         return "projects";
     }
 
@@ -38,11 +62,6 @@ public class RootController {
         return "task_detail";
     }
 
-//    @RequestMapping(value = "tasks", method = RequestMethod.GET)
-//    public String welcome(ModelMap model, @RequestParam int id) {
-//        model.put("tasks", taskRepository.)
-//        return "tasks";
-//    }
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login(ModelMap model) {
@@ -62,9 +81,4 @@ public class RootController {
         return "projects";
     }
 
-//    @RequestMapping(value = "admin", method = RequestMethod.GET)
-//    public String adminPage(ModelMap model){
-//        model.get("user");
-//        return "admin";
-//    }
 }

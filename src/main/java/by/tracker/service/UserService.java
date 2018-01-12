@@ -5,6 +5,8 @@ import by.tracker.model.UserProfile;
 import by.tracker.repository.UserProfileRepository;
 import by.tracker.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,5 +58,16 @@ public class UserService {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
         return userRepository.findAll();
+    }
+
+    public String getLoggedinUserName() {
+        Object principal = SecurityContextHolder.getContext()
+                .getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            return ((UserDetails) principal).getUsername();
+        }
+
+        return principal.toString();
     }
 }

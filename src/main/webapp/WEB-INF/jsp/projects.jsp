@@ -22,15 +22,15 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-                    <form method="get" action="/tasks" class="form-horizontal addProj">
+                    <form method="POST" action="/projects/new" class="form-horizontal addProj">
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="id" placeholder="Enter Project Name" />
+                                        <input type="text" class="form-control" name="name" placeholder="Enter Project Name" />
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="submit" class="btn-primary btn btn-block" value="Confirm">
+                                        <input type="submit" class="btn-primary btn btn-block" value="Add project!">
                                     </div>
                                 </div>
                             </div>

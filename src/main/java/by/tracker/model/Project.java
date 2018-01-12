@@ -28,10 +28,6 @@ public class Project implements Serializable {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "USERS")
-    @ManyToMany(mappedBy = "projects")
-    private Set<User> users = new HashSet<User>();
-
     @Column(name = "TASKS")
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "PROJECT_TASKS",
