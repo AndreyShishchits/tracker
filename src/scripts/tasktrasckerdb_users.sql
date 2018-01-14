@@ -1,0 +1,2 @@
+INSERT INTO tasktrasckerdb.users (login, name, password, surname) VALUES ('Andrey', 'Andrey', '$2a$10$/xMwZB75lxxW3pDr8hLV1OsgxC1cx7hjbd6vq1xaLbkV7iU3K8rKW', 'Shischits');
+INSERT INTO tasktrasckerdb.users (login, name, password, surname) VALUES ('123', 'Lol', '$2a$10$oT7IfkBlFGfHUqSLzFe2Tu0eJ1WlN8HWt7nVU6Y3GhXzq.kGKhsSi', 'lolov');
